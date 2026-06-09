@@ -9,3 +9,6 @@ jobs:
 
     steps:
       - run: echo "Hello GitHub Actions!"
+      - run: node -v
+      - run: pwd
+      - run: ls
