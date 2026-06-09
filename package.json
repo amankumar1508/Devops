@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run":"node index.js",
-    "test":"test.js"
+    "run": "node index.js",
+    "test": "node test.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",

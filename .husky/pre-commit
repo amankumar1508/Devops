@@ -1,0 +1,30 @@
+#!/bin/sh
+# Pre-commit hook: validate GitHub Actions workflow YAML files
+
+WORKFLOWS=".github/workflows/*.yml"
+ERROR=0
+
+for file in $WORKFLOWS; do
+  if [ -f "$file" ]; then
+    echo "Validating $file..."
+    # Basic YAML validation: check for common issues
+    if ! grep -q "^name:" "$file"; then
+      echo "❌ Missing 'name:' in $file"
+      ERROR=1
+    fi
+    if ! grep -q "^on:" "$file"; then
+      echo "❌ Missing 'on:' in $file"
+      ERROR=1
+    fi
+    if ! grep -q "^jobs:" "$file"; then
+      echo "❌ Missing 'jobs:' in $file"
+      ERROR=1
+    fi
+  fi
+done
+
+if [ $ERROR -eq 0 ]; then
+  echo "✅ All workflow files are valid!"
+fi
+
+exit $ERROR

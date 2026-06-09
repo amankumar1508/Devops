@@ -1,14 +1,19 @@
-name: Hello Workflow
+name: Node Workflow
 
 on:
   push
 
 jobs:
-  hello:
+  test:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - run: pwd
-      - run: ls
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: node -v
+      - run: npm -v
+      
