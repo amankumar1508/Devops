@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Hello GitHub Actions!"
-      - run: node -v
+      - uses: actions/checkout@v4
+
       - run: pwd
       - run: ls
